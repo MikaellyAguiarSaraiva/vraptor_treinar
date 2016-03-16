@@ -26,5 +26,6 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<a href="<c:url value='/produto/cadastro'/>"><input type="button" value="Adicionar"></a>
 	</body>
 </html>

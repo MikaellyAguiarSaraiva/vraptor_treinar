@@ -26,7 +26,7 @@ public class ProdutoController {
 	public Set<Produto> lista() {
 		return dao.listaTodos();
 	}
-	
+
 	@Path("/cadastro")
 	public void form() {
 	}

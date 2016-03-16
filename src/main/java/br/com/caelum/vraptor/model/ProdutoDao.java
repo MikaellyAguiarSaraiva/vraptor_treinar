@@ -22,13 +22,7 @@ public class ProdutoDao {
 	}
 	
 	public void remove(Produto produto) {	
-		while (it.hasNext()) {
-			Produto p = (Produto) it.next();
-			
-			if(p.getId() == produto.getId()) {
-				it.remove();
-			}
-		}			
+		removeIndexOf(produto);
 	}
 
 	public Produto alterar(Produto produto) {
@@ -44,6 +38,11 @@ public class ProdutoDao {
 	}
 	
 	public void edita(Produto produto) {
+		removeIndexOf(produto);	
+		produtos.add(produto);
+	}
+	
+	public void removeIndexOf(Produto produto) {
 		while (it.hasNext()) {
 			Produto p = (Produto) it.next();
 			
@@ -51,8 +50,6 @@ public class ProdutoDao {
 				it.remove();
 			}
 		}
-		
-		produtos.add(produto);
 	}
 
 }
