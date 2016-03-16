@@ -31,16 +31,28 @@ public class ProdutoDao {
 		}			
 	}
 
-	public Produto getProduto(Produto produto) {
-		Produto produto1 = new Produto();
+	public Produto alterar(Produto produto) {
+		Produto produtoAlt = new Produto();
 			while (it.hasNext()) {
 				Produto p = (Produto) it.next();
 				
 				if(p.getId() == produto.getId()) {
-					produto1 = p;
+					produtoAlt = p;
 				}
 			}
-		return produto1;
+		return produtoAlt;
+	}
+	
+	public void edita(Produto produto) {
+		while (it.hasNext()) {
+			Produto p = (Produto) it.next();
+			
+			if(p.getId() == produto.getId()) {
+				it.remove();
+			}
+		}
+		
+		produtos.add(produto);
 	}
 
 }

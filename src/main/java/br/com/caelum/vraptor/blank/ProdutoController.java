@@ -44,7 +44,14 @@ public class ProdutoController {
 	}
 	
 	@Path("alterar/{produto.id}")
-	public void alterar() {		
+	public Produto alterar(Produto produto) {
+		return dao.alterar(produto);
+	}
+	
+	@Path("edita/{produto.id}")
+	public void editar(Produto produto) {
+		dao.edita(produto);
+		result.redirectTo(this).lista();
 	}
 
 }
