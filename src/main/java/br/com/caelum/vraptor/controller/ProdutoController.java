@@ -1,4 +1,4 @@
-package br.com.caelum.vraptor.blank;
+package br.com.caelum.vraptor.controller;
 
 import java.util.Set;
 
