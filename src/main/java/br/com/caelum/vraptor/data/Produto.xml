@@ -2,10 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Produto">
+	
 	<resultMap id="result" type="Produto">
 		<result property="id" column="ID" />
 		<result property="nome" column="NOME" />
 		<result property="descricao" column="DESCRICAO" />	
 		<result property="preco" column="PRECO" />
 	</resultMap>
+	
+	<select id="getAll" resultMap="result">
+		SELECT * FROM PRODUTOS
+	</select>
+	
+	<select id="getById" parametertype="integer" resultMap="result">
+		SELECT * FROM PRODUTOS WHERE ID = #{id}
+	</select>
+	
+	<delete id="deleteById" parameterType="integer">
+		DELETE FROM PRODUTOS WHERE ID = #{id}
+	</delete>
+	
+	<insert id="insert" parameterType="Produto" useGeneratedKeys=”true”>
+		INSERT INTO PRODUTOS ( NOME, DESCRICAO, PRECO) 
+			VALUES ( #{nome}, #{descricao}, #{preco})
+	</insert>
+	
+	<update id="update" parameterType="Produto">
+		UPDATE PRODUTOS SET 
+			NOME 	  = #{nome},
+			DESCRICAO = #{descricao},
+			PRECO 	  = #{preco}
+		WHERE 
+			ID 		  = #{id}			
+	</update>
+	 
 </mapper>
