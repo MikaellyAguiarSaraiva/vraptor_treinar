@@ -1,7 +1,7 @@
 package br.com.caelum.vraptor.model;
 
 public class Produto {
-	private long id = (long) (Math.random() * 100);
+	private int id;
 	private String nome;
 	private String descricao;
 	private Double preco;
@@ -24,11 +24,11 @@ public class Produto {
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 }

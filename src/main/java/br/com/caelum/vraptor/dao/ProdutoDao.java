@@ -1,9 +1,8 @@
 package br.com.caelum.vraptor.dao;
 
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+
+
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -13,10 +12,7 @@ import br.com.caelum.vraptor.model.Produto;
 
 @Component
 public class ProdutoDao {
-	
-	/*static Set<Produto> produtos = new HashSet<Produto>();
-	Iterator<Produto> it = produtos.iterator();*/
-	
+
 	private SqlSessionFactory sqlSessionFactory;
 	
 	public ProdutoDao() {
@@ -69,44 +65,35 @@ public class ProdutoDao {
 			session.close();
 		}
 	}
-	
-	
-	
-	
-	
-	/*public void adiciona(Produto produto) {
-		produtos.add(produto);
-	}
-	
-	public void remove(Produto produto) {	
-		removeIndexOf(produto);
-	}
-
-	public Produto alterar(Produto produto) {
-		Produto produtoAlt = new Produto();
-			while (it.hasNext()) {
-				Produto p = (Produto) it.next();
-				
-				if(p.getId() == produto.getId()) {
-					produtoAlt = p;
-				}
-			}
-		return produtoAlt;
-	}
-	
-	public void edita(Produto produto) {
-		removeIndexOf(produto);	
-		produtos.add(produto);
-	}
-	
-	public void removeIndexOf(Produto produto) {
-		while (it.hasNext()) {
-			Produto p = (Produto) it.next();
-			
-			if(p.getId() == produto.getId()) {
-				it.remove();
-			}
+		
+	/**
+	* Insert an instance of Contact into the database.
+	* @param contact the instance to be persisted.
+	*/
+	public void insert(Produto produto) {
+		SqlSession session = sqlSessionFactory.openSession();
+		
+		try {
+			session.insert("Produto.insert", produto);
+			session.commit();
+		} finally {
+			session.close();
 		}
-	}*/
+	}
+	
+	/**
+	* Delete an instance of Contact from the database.
+	* @param id primary key value of the instance to be deleted.
+	*/
+	public void delete(int id) {
+		SqlSession session = sqlSessionFactory.openSession();
+		
+		try {
+			session.delete("Produto.deleteById", id);
+			session.commit();
+		} finally {
+			session.close();
+		}
+	}
 
 }

@@ -1,6 +1,7 @@
 package br.com.caelum.vraptor.controller;
 
-import java.util.Set;
+import java.util.List;
+//import java.util.Set;
 
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -23,8 +24,8 @@ public class ProdutoController {
 	}
 	
 	@Get()
-	public Set<Produto> lista() {
-		return dao.listaTodos();
+	public List<Produto> lista() {
+		return dao.selectAll();
 	}
 
 	@Path("/cadastro")
@@ -33,24 +34,24 @@ public class ProdutoController {
 	
 	@Post()
 	public void adiciona(Produto produto) {
-		dao.adiciona(produto);
+		dao.insert(produto);
 		result.redirectTo(this).form();
 	}
 
 	@Path("remover/{produto.id}")
 	public void remover(Produto produto) {
-		dao.remove(produto);
+		dao.delete(produto.getId());
 		result.redirectTo(this).lista();
 	}
 	
 	@Path("alterar/{produto.id}")
 	public Produto alterar(Produto produto) {
-		return dao.alterar(produto);
+		return dao.selectById(produto.getId());
 	}
 	
 	@Path("edita/{produto.id}")
 	public void editar(Produto produto) {
-		dao.edita(produto);
+		dao.update(produto);
 		result.redirectTo(this).lista();
 	}
 

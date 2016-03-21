@@ -11,24 +11,24 @@
 	</resultMap>
 	
 	<select id="getAll" resultMap="result">
-		SELECT * FROM PRODUTOS
+		SELECT * FROM PRODUTO
 	</select>
 	
-	<select id="getById" parametertype="integer" resultMap="result">
-		SELECT * FROM PRODUTOS WHERE ID = #{id}
+	<select id="getById" parameterType="integer" resultMap="result">
+		SELECT * FROM PRODUTO WHERE ID = #{id}
 	</select>
 	
 	<delete id="deleteById" parameterType="integer">
-		DELETE FROM PRODUTOS WHERE ID = #{id}
+		DELETE FROM PRODUTO WHERE ID = #{id}
 	</delete>
 	
-	<insert id="insert" parameterType="Produto" useGeneratedKeys=”true”>
-		INSERT INTO PRODUTOS ( NOME, DESCRICAO, PRECO) 
+	<insert id="insert" parameterType="Produto" useGeneratedKeys="true">
+		INSERT INTO PRODUTO ( NOME, DESCRICAO, PRECO) 
 			VALUES ( #{nome}, #{descricao}, #{preco})
 	</insert>
 	
 	<update id="update" parameterType="Produto">
-		UPDATE PRODUTOS SET 
+		UPDATE PRODUTO SET 
 			NOME 	  = #{nome},
 			DESCRICAO = #{descricao},
 			PRECO 	  = #{preco}
