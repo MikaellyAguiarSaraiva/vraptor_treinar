@@ -4,10 +4,13 @@ import java.util.List;
 
 
 
+
+
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.stereotype.Component;
 
-import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.model.Produto;
 
 @Component

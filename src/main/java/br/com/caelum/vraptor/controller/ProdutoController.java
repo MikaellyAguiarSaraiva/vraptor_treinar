@@ -3,6 +3,13 @@ package br.com.caelum.vraptor.controller;
 import java.util.List;
 //import java.util.Set;
 
+
+
+
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -15,11 +22,12 @@ import br.com.caelum.vraptor.model.Produto;
 @Path("/produto")
 public class ProdutoController {
 	
+	@Autowired
 	private ProdutoDao dao;
 	private Result result;
 	
-	public ProdutoController(ProdutoDao dao, Result result) {
-		this.dao = dao;
+	public ProdutoController(/*ProdutoDao dao */ Result result) {
+		//this.dao = dao;
 		this.result = result;
 	}
 	
