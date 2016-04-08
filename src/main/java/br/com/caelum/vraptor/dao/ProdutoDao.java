@@ -2,16 +2,13 @@ package br.com.caelum.vraptor.dao;
 
 import java.util.List;
 
-
-
-
-
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.caelum.vraptor.model.Produto;
+
 
 @Component
 public class ProdutoDao {

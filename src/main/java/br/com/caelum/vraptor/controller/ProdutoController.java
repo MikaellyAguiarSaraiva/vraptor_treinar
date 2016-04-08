@@ -26,10 +26,10 @@ public class ProdutoController {
 	private ProdutoDao dao;
 	private Result result;
 	
-	public ProdutoController(/*ProdutoDao dao */ Result result) {
-		//this.dao = dao;
-		this.result = result;
-	}
+//	public ProdutoController(/*ProdutoDao dao */ Result result) {
+//		//this.dao = dao;
+//		this.result = result;
+//	}
 	
 	@Get()
 	public List<Produto> lista() {
