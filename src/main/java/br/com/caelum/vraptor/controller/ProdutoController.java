@@ -9,6 +9,8 @@ import java.util.List;
 
 
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.caelum.vraptor.Get;
@@ -16,8 +18,10 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.model.Produto;
 import br.com.caelum.vraptor.service.ProdutoDao;
+import br.com.caelum.vraptor.validator.Validations;
 
 @Resource
 @Path("/produto")
@@ -26,9 +30,11 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoDao dao;
 	private Result result;
+	private Validator validator;
 	
-	public ProdutoController(Result result) {
+	public ProdutoController(Result result, Validator validator) {
 		this.result = result;
+		this.validator = validator;
 	}
 	
 	@Get()
@@ -41,7 +47,13 @@ public class ProdutoController {
 	}
 	
 	@Post()
-	public void adiciona(Produto produto) {
+	public void adiciona(final Produto produto) {		
+		validator.checking(new Validations() { { 
+			that(!produto.getNome().isEmpty(), "error", "nome.nao.informado");
+		} });
+		
+		validator.onErrorUsePageOf(ProdutoController.class).form();
+		
 		dao.insert(produto);
 		result.redirectTo(this).form();
 	}

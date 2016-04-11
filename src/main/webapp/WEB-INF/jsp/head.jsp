@@ -6,5 +6,5 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@ include file="../css.jsp"%>
-<title>Insert title here</title>
+<title>Vraptor/Spring/MyBatis</title>
 </head>
