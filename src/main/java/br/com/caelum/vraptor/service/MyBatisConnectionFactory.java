@@ -1,4 +1,4 @@
-package br.com.caelum.vraptor.dao;
+package br.com.caelum.vraptor.service;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

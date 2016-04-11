@@ -1,4 +1,4 @@
-package br.com.caelum.vraptor.dao;
+package br.com.caelum.vraptor.service;
 
 import java.util.List;
 
