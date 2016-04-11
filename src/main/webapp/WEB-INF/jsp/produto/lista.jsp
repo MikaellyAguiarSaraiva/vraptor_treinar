@@ -1,31 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" 
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Insert title here</title>
-	</head>
-	<body>
-		<table>
-			<thead>
-				<tr>
-					<th>NOME</th>
-					<th>DESCRICAO</th>
-					<th>AÇÕES</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach  items="${produtoList}" var="produto">					
-					<tr>
-						<td>${produto.nome}</td>
-						<td>${produto.descricao}</td>
-						<td> <a href="<c:url value='/produto/remover/${produto.id}'/>">EXCLUIR</a> - <a href="<c:url value='/produto/alterar/${produto.id}'/>">ALTERAR</a> </td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		<a href="<c:url value='/produto/cadastro'/>"><input type="button" value="Adicionar"></a>
-	</body>
+<%@ include file="../head.jsp"%>
+<body>
+	<div>
+		<div class="col-lg-12">
+			<div class="col-lg-4"></div>
+			<div class="col-lg-4">
+				<div class="panel panel-default" id="painel">
+					<div class="panel-heading">
+						<label>Listagem Produtos</label>
+					</div>
+					<div class="panel-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>NOME</th>
+									<th>DESCRICAO</th>
+									<th>AÇÕES</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${produtoList}" var="produto">
+									<tr>
+										<td>${produto.nome}</td>
+										<td>${produto.descricao}</td>
+										<td> 
+											&nbsp;&nbsp;&nbsp;<a href="<c:url value='/produto/remover/${produto.id}'/>"><i class="glyphicon glyphicon-remove" title="remover"></i></a>
+											&nbsp;&nbsp;&nbsp;<a href="<c:url value='/produto/alterar/${produto.id}'/>"><i class="glyphicon glyphicon-pencil" title="alterar"></i></a>
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+						<a href="<c:url value='/produto/cadastro'/>"><input class="btn btn-default" type="button" value="Adicionar"></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4"></div>
+		</div>
+	</div>
+
+</body>
 </html>

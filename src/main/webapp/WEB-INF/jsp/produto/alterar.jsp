@@ -1,18 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>	
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
+<%@ include file="../head.jsp"%>
 <body>
-	<form action="<c:url value='/produto/edita/${produto.id}'/>" method="post">
-	 	Nome : <input type="text" name="produto.nome" value="${produto.nome}" /><br/>
-	 	Descrição : <input type="text" name="produto.descricao" value="${produto.descricao}"/><br/>
-	 	Preço: <input type="text" name="produto.preco" value="${produto.preco}"/><br/>
-	 	<input type="submit" value="Editar" />
-	</form>
+	<div>
+		<div class="col-lg-12">
+			<div class="col-lg-4"></div>
+			<div class="col-lg-4">
+				<div class="panel panel-default" id="painel">
+					<div class="panel-heading">
+						<label>Alterar Produto</label>
+					</div>
+					<div class="panel-body">
+						<form action="<c:url value='/produto/adiciona'/>" method="post">
+							<div class="form-group">
+								<label>Nome : </label> 
+								<input type="text" name="produto.nome" value="${produto.nome}" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>Descrição :</label>
+								<input type="text" value="${produto.descricao}" name="produto.descricao" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>Preço : </label> 
+								<input type="text" name="produto.preco" value="${produto.preco}" class="form-control" />
+							</div>
+							<input type="submit" value="Editar" class="btn btn-default" />
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4"></div>
+		</div>
+	</div>
 </body>
 </html>
