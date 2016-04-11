@@ -26,14 +26,13 @@ public class ProdutoController {
 	private ProdutoDao dao;
 	private Result result;
 	
-//	public ProdutoController(/*ProdutoDao dao */ Result result) {
-//		//this.dao = dao;
-//		this.result = result;
-//	}
+	public ProdutoController(Result result) {
+		this.result = result;
+	}
 	
 	@Get()
 	public List<Produto> lista() {
-		return dao.selectAll();
+		return dao.getAll();
 	}
 
 	@Path("/cadastro")
@@ -48,13 +47,13 @@ public class ProdutoController {
 
 	@Path("remover/{produto.id}")
 	public void remover(Produto produto) {
-		dao.delete(produto.getId());
+		dao.deleteById(produto.getId());
 		result.redirectTo(this).lista();
 	}
 	
 	@Path("alterar/{produto.id}")
 	public Produto alterar(Produto produto) {
-		return dao.selectById(produto.getId());
+		return dao.getById(produto.getId());
 	}
 	
 	@Path("edita/{produto.id}")
