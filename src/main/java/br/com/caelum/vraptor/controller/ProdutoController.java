@@ -47,12 +47,14 @@ public class ProdutoController {
 	}
 	
 	@Post()
-	public void adiciona(final Produto produto) {		
+	public void adiciona(final Produto produto) {				
 		validator.checking(new Validations() { { 
-			that(!produto.getNome().isEmpty(), "error", "nome.nao.informado");
+			that(produto.getNome() != null , "ERROR", "nome.nao.informado");
+			that(produto.getDescricao() != null , "ERROR", "descricao.nao.informada");
+			that(produto.getPreco() != null , "ERROR", "preco.nao.informado");
 		} });
 		
-		validator.onErrorUsePageOf(ProdutoController.class).form();
+		validator.onErrorUsePageOf(this).form();
 		
 		dao.insert(produto);
 		result.redirectTo(this).form();
@@ -65,12 +67,20 @@ public class ProdutoController {
 	}
 	
 	@Path("alterar/{produto.id}")
-	public Produto alterar(Produto produto) {
+	public Produto alterar(final Produto produto) {
 		return dao.getById(produto.getId());
 	}
 	
 	@Path("edita/{produto.id}")
-	public void editar(Produto produto) {
+	public void editar(final Produto produto) {
+		validator.checking(new Validations() { { 
+			that(produto.getNome() != null , "ERROR", "nome.nao.informado");
+			that(produto.getDescricao() != null , "ERROR", "descricao.nao.informada");
+			that(produto.getPreco() != null , "ERROR", "preco.nao.informado");
+		} });
+		
+		validator.onErrorUsePageOf(this).alterar(produto);
+		
 		dao.update(produto);
 		result.redirectTo(this).lista();
 	}
