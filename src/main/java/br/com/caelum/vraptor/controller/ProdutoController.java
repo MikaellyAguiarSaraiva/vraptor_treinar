@@ -47,6 +47,7 @@ public class ProdutoController {
 	}
 	
 	@Post()
+	@Path("/adiciona")
 	public void adiciona(final Produto produto) {				
 		validator.checking(new Validations() { { 
 			that(produto.getNome() != null , "ERROR", "nome.nao.informado");

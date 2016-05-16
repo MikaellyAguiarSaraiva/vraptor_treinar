@@ -2,18 +2,14 @@
 <body>
 	<div>
 		<div class="col-lg-12">
-
-
 			<div class="col-lg-4"></div>
 			<div class="col-lg-4">
-
 				<div id="painel">
 					<c:forEach var="error" items="${errors}">
 						<div class="alert alert-danger" role="alert">
 							${error.category} - ${error.message}
 						</div>
 					</c:forEach>
-
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<label>Cadastro Produto</label>
@@ -42,4 +38,21 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	var produto = new ProdutoModel({
+		nome: 'teste3',
+		descricao: 'descricao3',
+		preco: 3
+	});
+	produto.save(
+			null,
+			{
+				success: function(model, response) {
+					console.log(model);
+				},
+				error: function(model, response) {
+					console.log('ocorreu erro!');
+				}
+			});
+</script>
 </html>
